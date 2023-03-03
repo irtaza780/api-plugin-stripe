@@ -3,13 +3,16 @@ const stripe = require('stripe')('sk_test_51Mh6waBsZr9i1hrRyfpvs1LuDLisPrNudFbiV
 const resolvers = {
     Mutation: {
         createStripeCustomer: async (parent, { name, email, description }, context) => {
+            console.log(name);
+            console.log(email);
+            console.log(description);
             try {
                 const customer = await stripe.customers.create({
                     name,
                     email,
                     description,
                 });
-
+                console.log(customer)
                 return {
                     id: customer.id,
                     name: customer.name,
