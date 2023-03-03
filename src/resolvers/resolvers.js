@@ -1,6 +1,6 @@
 const stripe = require('stripe')('sk_test_51Mh6waBsZr9i1hrRyfpvs1LuDLisPrNudFbiVHrcxuO5B8lOCVJoERKm2t9XuPNzj1UCDTaLyWJc1b72TO73jCzJ00kLsyiBnB');
 
-const resolvers = {
+export default {
     Mutation: {
         createStripeCustomer: async (parent, { name, email, description }, context) => {
             console.log(name);
@@ -26,6 +26,4 @@ const resolvers = {
         },
     },
 };
-
-module.exports = resolvers;
 

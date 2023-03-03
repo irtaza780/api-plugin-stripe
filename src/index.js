@@ -1,9 +1,10 @@
 import { createRequire } from "module";
 import importAsString from "@reactioncommerce/api-utils/importAsString.js";
-const mySchema = importAsString("./schema/schema.graphql");
 import myResolvers from "./resolvers/resolvers.js"
+const mySchema = importAsString("./schema/schema.graphql");
 const require = createRequire(import.meta.url);
-const pkg = require("../package.json");
+// const pkg = require("../package.json");
+import pkg from '../package.json'
 
 async function register(app) {
   await app.registerPlugin({
