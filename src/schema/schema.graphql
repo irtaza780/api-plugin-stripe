@@ -1,17 +1,14 @@
-extend type ProductVariant {
-  Chassis: String
-  Colour: String
-  Sunroof: String
+type Mutation {
+  createStripeCustomer(
+    email: String!
+    name: String!
+    description: String
+  ): StripeCustomer!
 }
 
-extend input ProductVariantInput {
-  Chassis: String
-  Colour: String
-  Sunroof: String
-}
-
-extend type CatalogProduct {
-  Chassis: String
-  Colour: String
-  Sunroof: String
+type StripeCustomer {
+  id: String!
+  email: String!
+  name: String!
+  description: String
 }

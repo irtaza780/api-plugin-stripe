@@ -1,5 +1,5 @@
 {
-  "name": "@test/api-plugin-stripe",
+  "name": "@shoaibfarooq3/api-plugin-stripe",
   "description": "Boilerplate Stripe plugin for the Reaction API",
   "label": "Stripe Plugin",
   "version": "1.0.0-development",
