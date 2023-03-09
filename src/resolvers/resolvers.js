@@ -183,13 +183,20 @@ export default {
                 throw new Error("Customer not Found");
             }
         },
-        
+        deleteStripeCustomer: async (parent, args, context, info) => {
+            const { id } = args
+            try {
+                const deleted = await stripe.customers.del(id, { retrieve: true });
+                return {
+                    id: deleted.id,
+                    name: deleted.name,
+                    email: deleted.email,
+                    description: deleted.description,
+                };
+            } catch (error) {
+                console.error(error);
+                throw new Error('Failed to delete Stripe customer');
+            }
+        }
     },
 };
-
-// const addressToString = (address) => {
-//     if (!address) {
-//         return null;
-//     }
-//     return `${address.line1}, ${address.line2}, ${address.city}, ${address.postal_code}, ${address.state}, ${address.country}`;
-// };
