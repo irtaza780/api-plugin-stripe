@@ -32,7 +32,7 @@ input StripeInput {
   email: String!
   name: String!
   description: String
-  address: [stripeCustomerAddress]
+  address: [stripeCustomerAddressInput]
   balance: Int
   created: Int
   currency: String
