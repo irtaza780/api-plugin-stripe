@@ -19,7 +19,7 @@ export default async function register(app) {
       schemas,
     },
     mutations,
-    queries,
+    // queries,
     // graphQL: {
     //   schemas: [mySchema],
     //   resolvers: myResolvers,
