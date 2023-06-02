@@ -1,14 +1,14 @@
-type Mutation {
-  createStripeCustomer(
-    email: String!
-    name: String!
-    description: String
-  ): StripeCustomer!
-}
+# type Mutation {
+#   createStripeCustomer(
+#     email: String!
+#     name: String!
+#     description: String
+#   ): StripeCustomer!
+# }
 
-type StripeCustomer {
-  id: String!
-  email: String!
-  name: String!
-  description: String
-}
+# type StripeCustomer {
+#   id: String!
+#   email: String!
+#   name: String!
+#   description: String
+# }

@@ -2,7 +2,7 @@
   "name": "@shoaibfarooq3/api-plugin-stripe",
   "description": "Boilerplate Stripe plugin for the Reaction API",
   "label": "Stripe Plugin",
-  "version": "1.2.2-development",
+  "version": "1.2.3-development",
   "main": "index.js",
   "type": "module",
   "engines": {
