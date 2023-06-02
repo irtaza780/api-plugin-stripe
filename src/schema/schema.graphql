@@ -3,30 +3,7 @@ type Mutation {
     email: String!
     name: String!
     description: String
-    address: stripeCustomerAddressInput
-    balance: Int
-    created: Int
-    currency: String
-    default_source: String
-    invoice_prefix: String
-    phone: String
   ): StripeCustomer!
-
-  updateStripeCustomer(
-    id: String!
-    email: String
-    name: String
-    description: String
-    address: stripeCustomerAddressInput
-    balance: Int
-    created: Int
-    currency: String
-    default_source: String
-    invoice_prefix: String
-    phone: String
-  ): StripeCustomer!
-  retrieveStripeCustomer(id: String!): StripeCustomer
-  deleteStripeCustomer(id: String!): StripeCustomer
 }
 
 type StripeCustomer {
@@ -34,27 +11,4 @@ type StripeCustomer {
   email: String!
   name: String!
   description: String
-  address: [stripeCustomerAddress]
-  balance: Int
-  created: Int
-  currency: String
-  default_source: String
-  invoice_prefix: String
-  phone: String
-}
-type stripeCustomerAddress {
-  line1: String
-  line2: String
-  city: String
-  state: String
-  postal_code: String
-  country: String
-}
-input stripeCustomerAddressInput {
-  line1: String
-  line2: String
-  city: String
-  state: String
-  postal_code: String
-  country: String
 }
