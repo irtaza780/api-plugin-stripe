@@ -41,33 +41,34 @@ input StripeInput {
   phone: String
 }
 type Mutation {
-  createStripeCustomer(input: StripeInput): # email: String!
-  # name: String!
-  # description: String
-  # address: stripeCustomerAddressInput
-  # balance: Int
-  # created: Int
-  # currency: String
-  # default_source: String
-  # invoice_prefix: String
-  # phone: String
-  StripeCustomer!
-
-  # updateStripeCustomer(
-  #   id: String!
-  #   email: String
-  #   name: String
-  #   description: String
-  #   address: stripeCustomerAddressInput
-  #   balance: Int
-  #   created: Int
-  #   currency: String
-  #   default_source: String
-  #   invoice_prefix: String
-  #   phone: String
-  # ): StripeCustomer!
-  # deleteStripeCustomer(id: String!): StripeCustomer
+  createStripeCustomer(input: StripeInput): StripeCustomer!
 }
-# type Query {
-#   retrieveStripeCustomer(id: String!): StripeCustomer
-# }
+type Query {
+  retrieveStripeCustomer(id: String!): StripeCustomer
+}
+
+# email: String!
+# name: String!
+# description: String
+# address: stripeCustomerAddressInput
+# balance: Int
+# created: Int
+# currency: String
+# default_source: String
+# invoice_prefix: String
+# phone: String
+
+# updateStripeCustomer(
+#   id: String!
+#   email: String
+#   name: String
+#   description: String
+#   address: stripeCustomerAddressInput
+#   balance: Int
+#   created: Int
+#   currency: String
+#   default_source: String
+#   invoice_prefix: String
+#   phone: String
+# ): StripeCustomer!
+# deleteStripeCustomer(id: String!): StripeCustomer
