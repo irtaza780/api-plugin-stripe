@@ -1,4 +1,4 @@
-export default async function createCustomer(parent, args, context, info) {
+export default async function createStripeCustomer(parent, args, context, info) {
             console.log(args);
             const {
                 name,

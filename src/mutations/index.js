@@ -1,4 +1,4 @@
-import createCustomer from "./createCustomer.js";
+import createStripeCustomer from "./createStripeCustomer.js";
 export default {
-    createCustomer
+    createStripeCustomer
 }
