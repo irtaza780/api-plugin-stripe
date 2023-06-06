@@ -1,0 +1,30 @@
+type stripeAccount {
+  id: ID
+  business_type: business_typeValue
+  country: String!
+  email: String!
+  type: capabilitiesPayload
+}
+enum business_typeValue {
+  individual
+  company
+  non_profit
+  government_entity
+}
+enum capabilitiesPayload {
+  custom
+  express
+  standard
+}
+input CreateStripeAccountInput {
+  business_type: business_typeValue
+  country: String!
+  email: String!
+  type: capabilitiesPayload
+}
+type Mutation {
+  createStripeAccount(input: CreateStripeAccountInput!): stripeAccount
+}
+type Query {
+  getStripeAccount(id: ID): stripeAccount
+}

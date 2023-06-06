@@ -1,6 +1,9 @@
-// import product from "./product.js";
+import getStripeAccount from "./getStripeAccount.js";
 import retrieveStripeCustomer from "./retrieveStripeCustomer.js";
+import getAllStripeCustomer from "./getAllStripeCustomer.js";
 
 export default {
-    retrieveStripeCustomer
+    retrieveStripeCustomer,
+    getStripeAccount,
+    getAllStripeCustomer
 };
