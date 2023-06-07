@@ -1,0 +1,181 @@
+type PaymentMethod {
+  id: ID
+  object: String
+  billingDetails: BillingDetails
+  card: Card
+  created: Int
+  customer: ID
+  livemode: Boolean
+  metadata: JSON
+  type: String
+}
+
+type BillingDetails {
+  address: Address
+  email: String
+  name: String
+  phone: String
+}
+
+type Address {
+  city: String
+  country: String
+  line1: String
+  line2: String
+  postalCode: String
+  state: String
+}
+
+type Card {
+  brand: String
+  checks: CardChecks
+  country: String
+  expMonth: Int
+  expYear: Int
+  fingerprint: String
+  funding: String
+  generatedFrom: String
+  last4: String
+  networks: CardNetworks
+  threeDSecureUsage: ThreeDSecureUsage
+  wallet: String
+}
+
+type CardChecks {
+  addressLine1Check: String
+  addressPostalCodeCheck: String
+  cvcCheck: String
+}
+
+type CardNetworks {
+  available: [String]
+  preferred: String
+}
+
+type ThreeDSecureUsage {
+  supported: Boolean
+}
+
+scalar JSON
+input PaymentMethodInput {
+  billingDetails: BillingDetailsInput
+  card: CardInput
+}
+input BillingDetailsInput {
+  address: StripeAddressInput
+  email: String
+  name: String
+  phone: String
+}
+input StripeAddressInput {
+  city: String
+  country: String
+  line1: String
+  line2: String
+  postalCode: String
+  state: String
+}
+
+input CardInput {
+  brand: String
+  checks: CardChecksInput
+  country: String
+  expMonth: Int
+  expYear: Int
+  fingerprint: String
+  funding: String
+  generatedFrom: String
+  last4: String
+  networks: CardNetworksInput
+  threeDSecureUsage: ThreeDSecureUsageInput
+  wallet: String
+  cardNumber: String
+}
+
+input CardChecksInput {
+  addressLine1Check: String
+  addressPostalCodeCheck: String
+  cvcCheck: String!
+}
+
+input CardNetworksInput {
+  available: [String]
+  preferred: String
+}
+input retrieveStripeCustomerPaymentMethodInput {
+  customerID: ID
+  PaymentID: ID
+}
+input ThreeDSecureUsageInput {
+  supported: Boolean
+}
+input updateCardInput {
+  expMonth: Int
+  expYear: Int
+}
+input updatePaymentMethod {
+  billingDetails: BillingDetailsInput
+  card: updateCardInput
+  id: ID!
+}
+enum typeInput {
+  acss_debit
+  affirm
+  afterpay_clearpay
+  alipay
+  au_becs_debit
+  bacs_debit
+  bancontact
+  blik
+  boleto
+  card
+  cashapp
+  customer_balance
+  eps
+  fpx
+  giropay
+  grabpay
+  ideal
+  klarna
+  konbini
+  link
+  oxxo
+  p24
+  paynow
+  paypal
+  pix
+  promptpay
+  sepa_debit
+  sofort
+  us_bank_account
+  wechat_pay
+  zip
+}
+input customerPaymentMethodInput {
+  type: typeInput
+  customerID: ID
+  "limit is between 1-100"
+  limit: Int
+}
+input detachPaymentInput {
+  PaymentID: ID!
+}
+input attachPaymentInput {
+  PaymentID: ID
+  customerID: ID!
+}
+type Mutation {
+  createStripePaymentMethod(input: PaymentMethodInput): PaymentMethod
+  updateStripePaymentMethod(input: updatePaymentMethod): PaymentMethod
+  attachPaymentMethodToCustomer(input: attachPaymentInput!): PaymentMethod
+  detachPayemntToCustomer(input: detachPaymentInput!): PaymentMethod
+}
+type Query {
+  retrieveStripePaymentMethod(id: ID): PaymentMethod
+  retrieveStripeCustomerPaymentMethod(
+    input: retrieveStripeCustomerPaymentMethodInput
+  ): PaymentMethod
+  retrieveStripeCustomerlistPaymentMethods(
+    input: customerPaymentMethodInput
+  ): [PaymentMethod]
+}

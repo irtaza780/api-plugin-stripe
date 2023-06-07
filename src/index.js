@@ -21,7 +21,7 @@ function myStartup(context) {
     // console.log("app ", app.expressApp);
     // console.log("if check")
     // app.expressApp.use(fileUpload());
-    app.expressApp.post("/myapi", async (req, res) => {
+    app.expressApp.post("/api", async (req, res) => {
       console.log("req.body ", req.body)
       // console.log("here");
       res.status(200).send({
