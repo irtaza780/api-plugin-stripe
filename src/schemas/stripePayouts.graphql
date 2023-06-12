@@ -1,0 +1,62 @@
+type stripePayouts {
+  id: ID
+  amount: Float
+  currency: String
+  description: String
+  source_type: source_typeValue
+  method: methodValue
+  # reconciliation_status: reconciliation_statusValue
+  # payoutsType: payoutsTypeValue
+  # payoutsStatus: payoutsStatusValue
+}
+enum source_typeValue {
+  bank_account
+  card
+  fpx
+}
+enum methodValue {
+  standard
+  instant
+}
+enum reconciliation_statusValue {
+  not_applicable
+  in_progress
+  completed
+}
+enum payoutsTypeValue {
+  card
+  bank_account
+}
+enum payoutsStatusValue {
+  paid
+  pending
+  in_transit
+  canceled
+  failed
+}
+input stripePayoutsInput {
+  amount: Float
+  currency: String
+  description: String
+  source_type: source_typeValue
+  method: methodValue
+  # reconciliation_status: reconciliation_statusValue
+  # payoutsType: payoutsTypeValue
+  # payoutsStatus: payoutsStatusValue
+}
+input updatePayoutsInput {
+  id: ID
+  amount: Float
+  currency: String
+  description: String
+  source_type: source_typeValue
+  method: methodValue
+}
+extend type Mutation {
+  createStripePayouts(input: stripePayoutsInput): stripePayouts
+  updateStripePayouts(input: updatePayoutsInput): stripePayouts
+}
+extend type Query {
+  retrieveStripePayouts(id: ID): stripePayouts
+  retrieveStripeListAllPayouts(limit: Int): [stripePayouts]
+}

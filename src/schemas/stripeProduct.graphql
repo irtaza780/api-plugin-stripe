@@ -1,0 +1,31 @@
+type ProductMethod {
+  id: ID
+  name: String!
+  active: Boolean
+  description: String
+}
+input createProductInput {
+  name: String!
+  active: Boolean
+  description: String
+}
+input UpdateStripeProductInput {
+  id: ID!
+  name: String
+  active: Boolean
+  description: String
+}
+type deleteStripeProductPayload {
+  id: ID
+  object: String
+  deleted: Boolean
+}
+extend type Mutation {
+  createStripeProduct(input: createProductInput): ProductMethod
+  updateStripeProduct(input: UpdateStripeProductInput): ProductMethod
+  deleteStripeProduct(id: ID!): deleteStripeProductPayload
+}
+extend type Query {
+  retrieveStripeProduct(id: ID): ProductMethod
+  retrieveStripeListAllProduct(limit: Int): [ProductMethod]
+}

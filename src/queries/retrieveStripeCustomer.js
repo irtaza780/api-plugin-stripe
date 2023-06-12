@@ -3,9 +3,9 @@ const require = createRequire(import.meta.url);
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 
 export default async function retrieveStripeCustomer(context, input) {
-    // console.log(input);
+    console.log(input);
 
-    const customerresponse = await stripe.customers.retrieve(input);
+    const customerResponse = await stripe.customers.retrieve(input);
     // console.log("Hello", customer);
-    return customerresponse;
+    return customerResponse;
 }

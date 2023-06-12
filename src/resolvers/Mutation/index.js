@@ -5,7 +5,13 @@ import deleteStripeCustomer from "./deleteStripeCustomer.js";
 import createStripePaymentMethod from "./createStripePaymentMethod.js";
 import updateStripePaymentMethod from './updateStripePaymentMethod.js'
 import attachPaymentMethodToCustomer from './attachPaymentMethodToCustomer.js'
-import detachPayemntToCustomer from './detachPayemntToCustomer.js'
+import detachPaymentToCustomer from './detachPaymentToCustomer.js'
+import createStripeProduct from './createStripeProduct.js';
+import updateStripeProduct from './updateStripeProduct.js'
+import deleteStripeProduct from './deleteStripeProduct.js'
+import createStripePayouts from './createStripePayouts.js'
+import updateStripePayouts from './updateStripePayouts.js'
+
 export default {
     createStripeCustomer,
     createStripeAccount,
@@ -14,5 +20,10 @@ export default {
     createStripePaymentMethod,
     updateStripePaymentMethod,
     attachPaymentMethodToCustomer,
-    detachPayemntToCustomer
+    detachPaymentToCustomer,
+    createStripeProduct,
+    updateStripeProduct,
+    deleteStripeProduct,
+    createStripePayouts,
+    updateStripePayouts
 }

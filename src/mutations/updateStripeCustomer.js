@@ -3,7 +3,6 @@ const require = createRequire(import.meta.url);
 const stripe = require("stripe")(
     process.env.STRIPE_API_KEY
 );
-import ReactionError from "@reactioncommerce/reaction-error";
 
 export default async function updateStripeCustomer(context, input) {
     console.log("updatedStripeCustomerResponse ", input);

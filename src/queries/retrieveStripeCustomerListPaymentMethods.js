@@ -2,7 +2,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 
-export default async function retrieveStripeCustomerlistPaymentMethods(
+export default async function retrieveStripeCustomerListPaymentMethods(
     context,
     input
 ) {

@@ -168,14 +168,14 @@ type Mutation {
   createStripePaymentMethod(input: PaymentMethodInput): PaymentMethod
   updateStripePaymentMethod(input: updatePaymentMethod): PaymentMethod
   attachPaymentMethodToCustomer(input: attachPaymentInput!): PaymentMethod
-  detachPayemntToCustomer(input: detachPaymentInput!): PaymentMethod
+  detachPaymentToCustomer(input: detachPaymentInput!): PaymentMethod
 }
 type Query {
   retrieveStripePaymentMethod(id: ID): PaymentMethod
   retrieveStripeCustomerPaymentMethod(
     input: retrieveStripeCustomerPaymentMethodInput
   ): PaymentMethod
-  retrieveStripeCustomerlistPaymentMethods(
+  retrieveStripeCustomerListPaymentMethods(
     input: customerPaymentMethodInput
   ): [PaymentMethod]
 }
