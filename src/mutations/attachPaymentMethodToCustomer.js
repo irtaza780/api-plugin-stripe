@@ -3,16 +3,20 @@ const require = createRequire(import.meta.url);
 const stripe = require("stripe")(
     process.env.STRIPE_API_KEY
 );
+import ReactionError from "@reactioncommerce/reaction-error";
 
 export default async function attachPaymentMethodToCustomer(context, input) {
-    // console.log("input ", input)
     const { PaymentID, customerID } = input
-    // console.log("PaymentID ", PaymentID);
-    // console.log("customerID ", customerID);
     const attachPaymentMethodToCustomerResp = await stripe.paymentMethods.attach(
         PaymentID,
         { customer: customerID }
     );
     console.log("attachPaymentMethodToCustomerResp ", attachPaymentMethodToCustomerResp);
-    return attachPaymentMethodToCustomerResp
+    if (attachPaymentMethodToCustomerResp) {
+        return attachPaymentMethodToCustomerResp
+
+    }
+    else {
+        throw new ReactionError("not-found", "Record not found");
+    }
 }

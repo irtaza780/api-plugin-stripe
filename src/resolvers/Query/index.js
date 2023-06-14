@@ -10,7 +10,7 @@ import retrieveStripePayouts from "./retrieveStripePayouts.js";
 import retrieveStripeListAllPayouts from "./retrieveStripeListAllPayouts.js";
 import cancelStripePayout from "./cancelStripePayout.js";
 import getAllSubscriptions from "./getAllSubscriptions.js";
-
+import getSubscriptionById from './getSubscriptionById.js'
 export default {
     retrieveStripeCustomer,
     getStripeAccount,
@@ -23,5 +23,6 @@ export default {
     retrieveStripePayouts,
     retrieveStripeListAllPayouts,
     cancelStripePayout,
-    getAllSubscriptions
+    getAllSubscriptions,
+    getSubscriptionById
 };
