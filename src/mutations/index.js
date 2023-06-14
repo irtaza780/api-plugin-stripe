@@ -11,6 +11,8 @@ import updateStripeProduct from './updateStripeProduct.js'
 import deleteStripeProduct from './deleteStripeProduct.js'
 import createStripePayouts from './createStripePayouts.js'
 import updateStripePayouts from './updateStripePayouts.js'
+import createStripeSubscription from './createStripeSubscription.js'
+import cancelStripeSubscription from './cancelStripeSubscription.js'
 
 export default {
     createStripeCustomer,
@@ -25,5 +27,7 @@ export default {
     updateStripeProduct,
     deleteStripeProduct,
     createStripePayouts,
-    updateStripePayouts
+    updateStripePayouts,
+    createStripeSubscription,
+    cancelStripeSubscription
 }

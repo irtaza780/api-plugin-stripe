@@ -1,4 +1,0 @@
-type subscriptionsMethod{
-    customerID:ID!
-    
-}

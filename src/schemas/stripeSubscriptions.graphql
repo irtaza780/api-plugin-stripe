@@ -1,0 +1,18 @@
+type stripeSubscription {
+  status: Boolean
+  message: String
+  # user: object
+  # subscriptionId: String
+}
+input createStripeSubscriptionInput {
+  customerEmail: String!
+  priceId: String!
+  paymentMethodId: String!
+}
+
+extend type Mutation {
+  createStripeSubscription(
+    input: createStripeSubscriptionInput!
+  ): stripeSubscription
+  cancelStripeSubscription(userId: ID!): stripeSubscription
+}

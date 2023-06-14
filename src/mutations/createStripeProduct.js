@@ -11,6 +11,6 @@ export default async function createStripeProduct(context, input) {
         active: active,
         description: description
     });
-    // console.log("productResponse ", productResponse);
+    console.log("productResponse ", productResponse);
     return productResponse
 }

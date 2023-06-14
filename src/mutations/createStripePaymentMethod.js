@@ -4,7 +4,10 @@ const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 export default async function createStripePaymentMethod(context, input) {
     console.log("input mutation ", input);
     const { billingDetails, card } = input;
-    const { email, name, phone } = billingDetails;
+    // if (billingDetails) {
+    //     const { email, name, phone } = billingDetails;
+    // }
+  
     const {
         cardNumber,
         brand,
