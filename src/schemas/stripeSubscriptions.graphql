@@ -9,10 +9,23 @@ input createStripeSubscriptionInput {
   priceId: String!
   paymentMethodId: String!
 }
-
+type SubscriptionPayload {
+  _id: ID
+  customerId: ID
+  subscriptionId: String
+  paymentId: String
+  priceId: String
+  createdAt: DateTime
+  subscriptionStatus: String
+  updatedAt: DateTime
+  cancel_at: DateTime
+}
 extend type Mutation {
   createStripeSubscription(
     input: createStripeSubscriptionInput!
   ): stripeSubscription
   cancelStripeSubscription(userId: ID!): stripeSubscription
+}
+extend type Query {
+  getAllSubscriptions: [SubscriptionPayload]
 }
