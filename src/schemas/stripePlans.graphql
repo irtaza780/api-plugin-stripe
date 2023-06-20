@@ -1,0 +1,57 @@
+type stripePlans {
+  id: ID
+  active: Boolean
+  currency: String
+  product: String
+  recurring: recurringPayload
+  type: typePayload
+  unit_amount: Float
+  unit_amount_decimal: String
+}
+type recurringPayload {
+  interval: intervalPayload
+  interval_count: Int
+  usage_type: usage_typePayload
+}
+input recurringInput {
+  interval: intervalPayload
+  interval_count: String
+  usage_type: usage_typePayload
+}
+enum intervalPayload {
+  month
+  year
+  week
+  day
+}
+enum usage_typePayload {
+  metered
+  licensed
+}
+enum typePayload {
+  one_time
+  recurring
+}
+input stripePlanInput {
+  #   id: ID
+  active: Boolean
+  currency: String
+  product: String!
+  recurring: recurringInput
+  unit_amount: Float
+  unit_amount_decimal: String
+}
+input updateStripePrice {
+  active: Boolean
+  currency: String
+  recurring: recurringInput
+  unit_amount: Float
+  unit_amount_decimal: String
+}
+extend type Mutation {
+  createStripePlan(input: stripePlanInput!): stripePlans!
+  updateStripePrice(input: updateStripePrice, product: String): stripePlans
+}
+extend type Query {
+  retrievesStripePlan(id: ID): stripePlans!
+}

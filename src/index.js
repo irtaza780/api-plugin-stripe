@@ -8,7 +8,6 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 var _context = null;
 
-
 function myStartup(context) {
   _context = context;
   const { app, collections, rootUrl } = context;
@@ -22,14 +21,13 @@ function myStartup(context) {
     // console.log("if check")
     // app.expressApp.use(fileUpload());
     app.expressApp.post("/api", async (req, res) => {
-      console.log("req.body ", req.body)
+      console.log("req.body ", req.body);
       // console.log("here");
       res.status(200).send({
-        message: "This is message"
-      })
-    })
+        message: "This is message",
+      });
+    });
   }
-
 }
 
 export default async function register(app) {
@@ -42,7 +40,17 @@ export default async function register(app) {
         name: "StripeSubscription",
         updatedAt: { type: Date, default: Date.now },
         createdAt: { type: Date, default: Date.now },
-      }
+      },
+      Plans: {
+        name: "Plans",
+        updatedAt: { type: Date, default: Date.now },
+        createdAt: { type: Date, default: Date.now },
+      },
+      StripeProducts: {
+        name: "StripeProducts",
+        updatedAt: { type: Date, default: Date.now },
+        createdAt: { type: Date, default: Date.now },
+      },
     },
     functionsByType: {
       startup: [myStartup],

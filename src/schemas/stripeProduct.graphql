@@ -3,11 +3,18 @@ type ProductMethod {
   name: String!
   active: Boolean
   description: String
+  default_price: String
+}
+
+input pricePlanInput {
+  currency: String
+  unitAmount: String
 }
 input createProductInput {
   name: String!
   active: Boolean
   description: String
+  pricePlan: pricePlanInput
 }
 input UpdateStripeProductInput {
   id: ID!
