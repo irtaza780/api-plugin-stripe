@@ -54,4 +54,5 @@ extend type Mutation {
 }
 extend type Query {
   retrievesStripePlan(id: ID): stripePlans!
+  retrieveAllStripePrices(limit: Int): [stripePlans]
 }
