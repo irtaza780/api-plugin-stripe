@@ -1,8 +1,7 @@
 type stripeSubscription {
   status: Boolean
   message: String
-  # user: object
-  # subscriptionId: String
+  stripeData: JSON
 }
 input createStripeSubscriptionInput {
   customerEmail: String!
@@ -19,14 +18,24 @@ type SubscriptionPayload {
   subscriptionStatus: String
   updatedAt: DateTime
   cancel_at: DateTime
+  # stripeData: JSON
+}
+enum billingCyclePayload {
+  unchanged
+  now
 }
 extend type Mutation {
   createStripeSubscription(
     input: createStripeSubscriptionInput!
   ): stripeSubscription
   cancelStripeSubscription(userId: ID!): stripeSubscription
+  resumeStripeSubscriptions(
+    id: ID
+    billingCycle: billingCyclePayload
+  ): stripeSubscription
 }
 extend type Query {
   getAllSubscriptions: [SubscriptionPayload]
   getSubscriptionById(userID: ID!): SubscriptionPayload
+  getAllStripeSubscribedCustomer(limit: Int): stripeSubscription
 }

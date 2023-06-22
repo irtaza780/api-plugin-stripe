@@ -13,8 +13,10 @@ import getAllSubscriptions from "./getAllSubscriptions.js";
 import getSubscriptionById from "./getSubscriptionById.js";
 import retrievesStripePlan from "./retrievesStripePlan.js";
 import retrieveAllStripePrices from "./retrieveAllStripePrices.js";
+import getAllStripeSubscribedCustomer from "./getAllStripeSubscribedCustomer.js";
 
 export default {
+  getAllStripeSubscribedCustomer,
   retrieveAllStripePrices,
   retrieveStripeCustomer,
   getStripeAccount,

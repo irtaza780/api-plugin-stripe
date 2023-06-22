@@ -25,6 +25,7 @@ export default async function createStripeSubscription(context, input) {
     return {
       status: true,
       message: "You've already active subscription.",
+      stripeData: ifUser,
     };
   }
   if (customer) {
@@ -38,7 +39,7 @@ export default async function createStripeSubscription(context, input) {
     subscription = await stripe.subscriptions.create({
       customer: customer.id,
       items: [{ price: { priceId, type: "recurring" } }],
-    //   items: [{ price: priceId }],
+      //   items: [{ price: priceId }],
       default_payment_method: paymentMethodId,
     });
     // console.log("subscription 38 :", subscription);
@@ -96,6 +97,7 @@ export default async function createStripeSubscription(context, input) {
       return {
         status: true,
         message: "You've active subscription now.",
+        stripeData: updatedAccount,
       };
     } else {
       throw new ReactionError("server-error", "Try again later");
@@ -115,5 +117,10 @@ export default async function createStripeSubscription(context, input) {
       default_payment_method: paymentMethodId,
     });
     console.log("subscription ", subscription);
+    return {
+      status: true,
+      message: "Your subscription has been activated.",
+      stripeData: subscription,
+    };
   }
 }
