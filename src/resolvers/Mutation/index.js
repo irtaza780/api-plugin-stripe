@@ -16,8 +16,11 @@ import cancelStripeSubscription from "./cancelStripeSubscription.js";
 import createStripePlan from "./createStripePlan.js";
 import updateStripePrice from "./updateStripePrice.js";
 import resumeStripeSubscriptions from "./resumeStripeSubscriptions.js";
+import createStripePaymentIntents from "./createStripePaymentIntents.js";
+import updateStripePaymentIntents from "./updateStripePaymentIntents.js";
 
 export default {
+  updateStripePaymentIntents,
   createStripeCustomer,
   createStripeAccount,
   updateStripeCustomer,
@@ -36,4 +39,5 @@ export default {
   createStripePlan,
   updateStripePrice,
   resumeStripeSubscriptions,
+  createStripePaymentIntents,
 };

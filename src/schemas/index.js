@@ -6,6 +6,7 @@ const stripeProduct = importAsString("./stripeProduct.graphql");
 const stripePayouts = importAsString("./stripePayouts.graphql");
 const stripeSubscriptions = importAsString("./stripeSubscriptions.graphql");
 const stripePlans = importAsString("./stripePlans.graphql");
+const stripePaymentIntents = importAsString("./stripePaymentIntents.graphql");
 export default [
   stripeCustomer,
   stripeAccount,
@@ -14,4 +15,5 @@ export default [
   stripePayouts,
   stripeSubscriptions,
   stripePlans,
+  stripePaymentIntents,
 ];

@@ -14,6 +14,7 @@ import getSubscriptionById from "./getSubscriptionById.js";
 import retrievesStripePlan from "./retrievesStripePlan.js";
 import retrieveAllStripePrices from "./retrieveAllStripePrices.js";
 import getAllStripeSubscribedCustomer from "./getAllStripeSubscribedCustomer.js";
+import retrieveStripePaymentIntentById from "./retrieveStripePaymentIntentById.js";
 
 export default {
   retrieveStripeCustomer,
@@ -32,4 +33,5 @@ export default {
   retrievesStripePlan,
   retrieveAllStripePrices,
   getAllStripeSubscribedCustomer,
+  retrieveStripePaymentIntentById,
 };

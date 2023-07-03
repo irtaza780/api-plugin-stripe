@@ -7,6 +7,7 @@ type stripePlans {
   type: typePayload
   unit_amount: Float
   unit_amount_decimal: String
+  
 }
 type recurringPayload {
   interval: intervalPayload

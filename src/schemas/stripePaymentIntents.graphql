@@ -1,0 +1,25 @@
+type stripePaymentIntentPayload {
+  status: Boolean
+  message: String
+  data: JSON
+}
+input paymentIntentInput {
+  amount: Float
+  currency: String
+  automaticPaymentMethods: automaticPaymentMethodsInput
+}
+input automaticPaymentMethodsInput {
+  enabled: Boolean
+}
+extend type Mutation {
+  createStripePaymentIntents(
+    input: paymentIntentInput
+  ): stripePaymentIntentPayload
+  updateStripePaymentIntents(
+    input: paymentIntentInput
+    id: ID!
+  ): stripePaymentIntentPayload
+}
+extend type Query {
+  retrieveStripePaymentIntentById(id: ID): stripePaymentIntentPayload
+}

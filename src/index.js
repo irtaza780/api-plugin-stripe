@@ -18,7 +18,7 @@ function myStartup(context) {
   app.expressApp.use(morgan("dev"));
   if (app.expressApp) {
     // console.log("app ", app.expressApp);
-    // console.log("if check")
+    // console.log("if check");
     // app.expressApp.use(fileUpload());
     app.expressApp.post("/api", async (req, res) => {
       console.log("req.body ", req.body);
