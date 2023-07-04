@@ -22,4 +22,5 @@ extend type Mutation {
 }
 extend type Query {
   retrieveStripePaymentIntentById(id: ID): stripePaymentIntentPayload
+  listAllStripePaymentIntents(limit: Int): stripePaymentIntentPayload
 }

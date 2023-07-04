@@ -10,7 +10,7 @@ export default async function createStripePlan(
     context,
     input
   );
-  console.log("stripPlanResponse", stripPlanResponse);
+  // console.log("stripPlanResponse", stripPlanResponse);
 
   return stripPlanResponse;
 }

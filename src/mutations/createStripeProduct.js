@@ -37,6 +37,9 @@ export default async function createStripeProduct(context, input) {
     if (productResponse?.active) {
       updatePlans.active = productResponse?.active;
     }
+    if (productResponse?.unit_amount_decimal) {
+      updatePlans.unit_amount_decimal = productResponse?.unit_amount_decimal;
+    }
     updatePlans.updatedAt = new Date();
     const modifier = { $set: updatePlans };
     const updatedPlansResponse = await StripeProducts.findOneAndUpdate(
@@ -55,6 +58,7 @@ export default async function createStripeProduct(context, input) {
       priceId: productResponse?.default_price,
       planName: productResponse?.name,
       active: productResponse?.active,
+      unitAmountDecimal: productResponse?.unit_amount_decimal,
       createdAt: now,
       updatedAt: now,
     };

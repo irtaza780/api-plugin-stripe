@@ -41,8 +41,8 @@ export default async function register(app) {
         updatedAt: { type: Date, default: Date.now },
         createdAt: { type: Date, default: Date.now },
       },
-      Plans: {
-        name: "Plans",
+      StripePlans: {
+        name: "StripePlans",
         updatedAt: { type: Date, default: Date.now },
         createdAt: { type: Date, default: Date.now },
       },

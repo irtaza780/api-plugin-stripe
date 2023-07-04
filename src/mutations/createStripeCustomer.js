@@ -3,6 +3,7 @@ const require = createRequire(import.meta.url);
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 export default async function createStripeCustomer(context, input) {
   // console.log("input mutation ", input)
+  // const { StripeSubscription } = context;
   const {
     name,
     email,
@@ -43,6 +44,7 @@ export default async function createStripeCustomer(context, input) {
     invoice_prefix,
     phone,
   });
-  // console.log("customer ", customer);
+  console.log("customer ", customer);
+
   return customer;
 }

@@ -15,6 +15,9 @@ export default async function createStripeSubscription(context, input) {
   // console.log("customer.data[0].id  14 ", customer.id);
   const query = { "emails.0.address": customerEmail.toLowerCase() };
   const ifUser = await Accounts.findOne(query);
+  console.log("ifUser ", ifUser);
+  var fullName = ifUser?.profile?.firstName + " " + ifUser?.profile?.lastName;
+  console.log("fullName ", fullName);
   let userID;
   if (!ifUser) {
     throw new ReactionError("not-found", "User not found");
@@ -36,12 +39,12 @@ export default async function createStripeSubscription(context, input) {
     );
     console.log("paymentAttachResponse 27 :", paymentAttachResponse);
     let subscription;
-    subscription = await stripe.subscriptions.create({
+    subscription = {
       customer: customer.id,
-      items: [{ price: { priceId, type: "recurring" } }],
-      //   items: [{ price: priceId }],
+      // items: [{ price: { priceId, type: "recurring" } }],
+      items: [{ price: priceId }],
       default_payment_method: paymentMethodId,
-    });
+    };
     // console.log("subscription 38 :", subscription);
     // console.log("subscription id 38 :", subscription.id);
     const filter = { _id: userID };
@@ -62,12 +65,16 @@ export default async function createStripeSubscription(context, input) {
     const subscriptionTableResp = await StripeSubscription.findOne({
       customerId: userID,
     });
+    console.log("subscriptionTableResp ", subscriptionTableResp);
     if (subscriptionTableResp) {
       // console.log("Here");
       console.log("subscriptionTableResp :", subscriptionTableResp);
       const filter = { _id: subscriptionTableResp?._id };
+
       const update = {
         $set: {
+          customerName: fullName,
+          customerEmail: customerEmail.toLowerCase(),
           subscriptionStatus: "active",
           subscriptionId: subscription?.id,
           customerId: userID,
@@ -82,6 +89,8 @@ export default async function createStripeSubscription(context, input) {
       console.log("StripeSubscriptionResponse ", StripeSubscriptionResponse);
     } else {
       const newSubscription = {
+        customerName: fullName,
+        customerEmail: customerEmail.toLowerCase(),
         customerId: userID,
         subscriptionId: subscription?.id,
         paymentId: paymentMethodId,
@@ -102,25 +111,25 @@ export default async function createStripeSubscription(context, input) {
     } else {
       throw new ReactionError("server-error", "Try again later");
     }
-  } else {
-    // If the customer does not exist, create a new customer and attach the PaymentMethod
-    const newCustomer = await stripe.customers.create({
-      email: email,
-      payment_method: paymentMethodId,
-    });
-    let subscription;
-    subscription = await stripe.subscriptions.create({
-      customer: newCustomer.id,
-      items: [{ price: { priceId, type: "recurring" } }],
-
-      //   items: [{ price: priceId, type: "recurring" }],
-      default_payment_method: paymentMethodId,
-    });
-    console.log("subscription ", subscription);
-    return {
-      status: true,
-      message: "Your subscription has been activated.",
-      stripeData: subscription,
-    };
   }
+  //  else {
+  //   // If the customer does not exist, create a new customer and attach the PaymentMethod
+  //   const newCustomer = await stripe.customers.create({
+  //     email: email,
+  //     payment_method: paymentMethodId,
+  //   });
+  //   let subscription;
+  //   subscription = await stripe.subscriptions.create({
+  //     customer: newCustomer.id,
+  //     items: [{ price: { priceId, type: "recurring" } }],
+  //     //   items: [{ price: priceId, type: "recurring" }],
+  //     default_payment_method: paymentMethodId,
+  //   });
+  //   console.log("subscription ", subscription);
+  //   return {
+  //     status: true,
+  //     message: "Your subscription has been activated.",
+  //     stripeData: subscription,
+  //   };
+  // }
 }
