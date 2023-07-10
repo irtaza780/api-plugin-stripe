@@ -6,7 +6,7 @@ export default async function createStripeCheckOutSession(context, input) {
   console.log("input", input);
   const { priceId, quantity } = input;
   const sessionResponse = await stripe.checkout.sessions.create({
-    success_url: "http://localhost:3000/graphql/success",
+    success_url: "http://localhost:3000/success",
     line_items: [{ price: priceId, quantity: quantity }],
     mode: "subscription",
   });
