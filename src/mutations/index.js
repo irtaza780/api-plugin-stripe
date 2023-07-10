@@ -18,8 +18,10 @@ import updateStripePrice from "./updateStripePrice.js";
 import resumeStripeSubscriptions from "./resumeStripeSubscriptions.js";
 import createStripePaymentIntents from "./paymentIntents/createStripePaymentIntents.js";
 import updateStripePaymentIntents from "./paymentIntents/updateStripePaymentIntents.js";
+import createStripeCheckOutSession from "./stripeCheckOutSessions/createStripeCheckOutSession.js";
 
 export default {
+  createStripeCheckOutSession,
   createStripeCustomer,
   createStripeAccount,
   updateStripeCustomer,

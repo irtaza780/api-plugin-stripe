@@ -1,0 +1,13 @@
+type checkOutSession {
+  status: Boolean
+  message: String
+  stripeData: JSON
+}
+input checkOutSessionInput {
+  priceId: ID
+  quantity: Int
+}
+
+extend type Mutation {
+  createStripeCheckOutSession(input: checkOutSessionInput): checkOutSession
+}
