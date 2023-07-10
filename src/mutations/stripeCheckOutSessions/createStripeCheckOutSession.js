@@ -10,9 +10,10 @@ export default async function createStripeCheckOutSession(context, input) {
   let url;
   if (process.env.ENVIRONMENT === "production") {
     url = process.env.PRODUCTION_URL;
-  } else {
+  } else if (process.env.ENVIRONMENT === "localhost") {
     url = process.env.LOCALHOST_URL;
   }
+  console.log("url ", url);
   const sessionResponse = await stripe.checkout.sessions.create({
     success_url: url,
     line_items: [{ price: priceId, quantity: quantity }],
