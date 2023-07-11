@@ -53,7 +53,11 @@ export default async function createStripeSubscription(context, input) {
     //     type:""
     // }
     const update = {
-      $set: { subscriptionStatus: "active", updatedAt: new Date() },
+      $set: {
+        subscriptionStatus: "active",
+        isActive: true,
+        updatedAt: new Date(),
+      },
     };
     const options = { new: true };
     const updatedAccount = await Accounts.findOneAndUpdate(
