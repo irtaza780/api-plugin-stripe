@@ -19,8 +19,10 @@ import resumeStripeSubscriptions from "./resumeStripeSubscriptions.js";
 import createStripePaymentIntents from "./paymentIntents/createStripePaymentIntents.js";
 import updateStripePaymentIntents from "./paymentIntents/updateStripePaymentIntents.js";
 import createStripeCheckOutSession from "./stripeCheckOutSessions/createStripeCheckOutSession.js";
+import createStripeCustomerFromWebhookCall from "./createStripeCustomerFromWebhookCall.js";
 
 export default {
+  createStripeCustomerFromWebhookCall,
   createStripeCheckOutSession,
   createStripeCustomer,
   createStripeAccount,

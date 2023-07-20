@@ -21,10 +21,36 @@ function myStartup(context) {
     // console.log("if check");
     // app.expressApp.use(fileUpload());
     app.expressApp.post("/api", async (req, res) => {
-      console.log("req.body ", req.body);
+      // console.log("req.res ", res);
       // console.log("here");
+      let customerEmail;
+      // if ((req.body.type = "customer.created")) {
+      //   customerEmail = req.body.data.object.email;
+      // }
+      // console.log("customerEmail ", customerEmail);
+      if ((req.body.type = "customer.subscription.created")) {
+        // if (
+        //   req.body.data.object.items.plan != undefined ||
+        //   req.body.data.object.items.plan != null
+        // ) {
+        // console.log("req.body.type: ", req.body.type);
+        // console.log(
+        //   "req.body.data.object.customer:  ",
+        //   req.body.data.object.customer
+        // );
+        // console.log(
+        //   "req.body.data.object.items.plan:  ",
+        //   req.body.data.object.plan
+        // );
+        // console.log("req.body.data.object:  ", req.body.data.object);
+        await context.mutations.createStripeCustomerFromWebhookCall(
+          context,
+          req.body
+        );
+        // }
+      }
       res.status(200).send({
-        message: "This is message",
+        message: "This is new message",
       });
     });
   }
