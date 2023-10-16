@@ -22,8 +22,15 @@ input CreateStripeAccountInput {
   email: String!
   type: capabilitiesPayload
 }
+
+input ExpressAccountLoginLinkInput {
+  accountId: String
+}
+
 type Mutation {
   createStripeAccount(input: CreateStripeAccountInput!): stripeAccount
+  createConnectedAccount(input: CreateStripeAccountInput): String
+  expressAccountLoginLink(input: ExpressAccountLoginLinkInput): String
 }
 type Query {
   getStripeAccount(id: ID): stripeAccount

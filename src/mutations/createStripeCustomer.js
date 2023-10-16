@@ -25,7 +25,7 @@ export default async function createStripeCustomer(context, input) {
     country: null,
   };
 
-  const customer = await stripe.customers.create({
+  const stripeCustomer = await stripe.customers.create({
     name,
     email,
     description,
@@ -44,7 +44,13 @@ export default async function createStripeCustomer(context, input) {
     invoice_prefix,
     phone,
   });
-  console.log("customer ", customer);
+  console.log("customer ", stripeCustomer);
 
-  return customer;
+  const setupIntent = await stripe.setupIntents.create({
+    customer: stripeCustomer.id,
+  });
+
+  console.log("SetupIntent is ", setupIntent);
+
+  return stripeCustomer;
 }
