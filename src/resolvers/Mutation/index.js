@@ -19,6 +19,9 @@ import resumeStripeSubscriptions from "./resumeStripeSubscriptions.js";
 import createStripePaymentIntents from "./paymentIntents/createStripePaymentIntents.js";
 import updateStripePaymentIntents from "./paymentIntents/updateStripePaymentIntents.js";
 import createStripeCheckOutSession from "./stripeCheckOutSessions/createStripeCheckOutSession.js";
+import createConnectedAccount from "./createConnectedAccount.js";
+import expressAccountLoginLink from "./expressAccountLoginLink.js";
+import deleteStripeAccount from "./deleteStripeAccount.js";
 
 export default {
   createStripeCheckOutSession,
@@ -42,4 +45,7 @@ export default {
   updateStripePrice,
   resumeStripeSubscriptions,
   createStripePaymentIntents,
+  createConnectedAccount,
+  expressAccountLoginLink,
+  deleteStripeAccount,
 };

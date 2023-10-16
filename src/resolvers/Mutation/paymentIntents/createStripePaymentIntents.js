@@ -4,7 +4,7 @@ export default async function createStripePaymentIntents(
   context,
   info
 ) {
-  // console.log("input ", input);
+  console.log("input stripe payment intent ", input);
 
   const stripeResponse = await context.mutations.createStripePaymentIntents(
     context,

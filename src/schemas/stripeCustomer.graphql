@@ -60,6 +60,7 @@ type Mutation {
   createStripeCustomer(input: StripeInput): StripeCustomer!
   updateStripeCustomer(input: updateStripeCustomerInput): StripeCustomer
   deleteStripeCustomer(id: ID): deleteStripeCustomer
+  deleteStripeAccount(id: ID): deleteStripeCustomer
 }
 type Query {
   retrieveStripeCustomer(id: String!): StripeCustomer!

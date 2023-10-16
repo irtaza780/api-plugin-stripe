@@ -20,6 +20,9 @@ import createStripePaymentIntents from "./paymentIntents/createStripePaymentInte
 import updateStripePaymentIntents from "./paymentIntents/updateStripePaymentIntents.js";
 import createStripeCheckOutSession from "./stripeCheckOutSessions/createStripeCheckOutSession.js";
 import createStripeCustomerFromWebhookCall from "./createStripeCustomerFromWebhookCall.js";
+import createConnectedAccount from "./createConnectedAccount.js";
+import expressAccountLoginLink from "./expressAccountLoginLink.js";
+import deleteStripeAccount from "./deleteStripeAccount.js";
 
 export default {
   createStripeCustomerFromWebhookCall,
@@ -44,4 +47,7 @@ export default {
   resumeStripeSubscriptions,
   createStripePaymentIntents,
   updateStripePaymentIntents,
+  createConnectedAccount,
+  expressAccountLoginLink,
+  deleteStripeAccount,
 };
