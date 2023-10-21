@@ -3,11 +3,25 @@ type checkOutSession {
   message: String
   stripeData: JSON
 }
+
+enum StripeCheckoutModeEnum {
+  payment
+  setup
+  subscription
+}
+
 input checkOutSessionInput {
   priceId: ID
   quantity: Int
+  mode: StripeCheckoutModeEnum!
+}
+
+input StripeSinglePriceInput {
+  unitAmount: Float
+  currency: String
 }
 
 extend type Mutation {
+  createStripeSinglePrice(input: StripeSinglePriceInput!): checkOutSession
   createStripeCheckOutSession(input: checkOutSessionInput): checkOutSession
 }
