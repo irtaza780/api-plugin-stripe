@@ -10,10 +10,16 @@ enum StripeCheckoutModeEnum {
   subscription
 }
 
+enum SubscriptionTypeEnum {
+  Basic
+  Premium
+}
+
 input checkOutSessionInput {
   priceId: ID
   quantity: Int
   mode: StripeCheckoutModeEnum!
+  subscriptionType: SubscriptionTypeEnum
 }
 
 input StripeSinglePriceInput {

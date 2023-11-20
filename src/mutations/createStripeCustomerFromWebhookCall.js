@@ -3,23 +3,44 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
 // import { dataFile } from "../utils/dataFile.js";
+
+var i = 0;
 export default async function createStripeCustomerFromWebhookCall(
   context,
   input
 ) {
-  const { Accounts, StripeSubscription } = context.collections;
+  const { userId, authToken, collections, appEvents } = context;
 
-  console.log("input mutation ", input);
-  console.log("context.user", context.user);
+  console.log(
+    "***********************input received for customer creation*************88",
+    input
+  );
+
+  const { Accounts, StripeSubscription } = collections;
+
+  const { subscriptionId, ...data } = input;
+
+  const res = await StripeSubscription.findOneAndUpdate(
+    { subscriptionId },
+    { $set: { ...data } },
+    { upsert: true, new: true }
+  );
+
+  await appEvents.emit("afterMembershipSubscription", {
+    subscriptionId,
+  });
+
+  return;
+
   let customerId = context?.user?.id;
-  const {
-    current_period_end,
-    current_period_start,
-    customer,
-    plan,
-    latest_invoice,
-  } = input.data.object;
-  let { id, amount, interval, product } = plan;
+  // const {
+  //   current_period_end,
+  //   current_period_start,
+  //   customer,
+  //   plan,
+  //   latest_invoice,
+  // } = input.data.object;
+  // let { id, amount, interval, product } = plan;
   // const { billingDetails, card } = input;
   const now = new Date();
   const StripeCustomerResponse = await stripe.customers.retrieve(customer);

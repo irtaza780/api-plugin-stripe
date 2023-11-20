@@ -7,13 +7,17 @@ export default async function createStripeProduct(context, input) {
   const { StripeProducts } = context.collections;
   let currency = pricePlan?.currency;
   let unit_amount_decimal = pricePlan?.unitAmount;
+  unit_amount_decimal = parseFloat(unit_amount_decimal) * 100;
+
+  console.log("unit amount decimal is ", unit_amount_decimal);
+
   const productResponse = await stripe.products.create({
     name: name,
     active: active,
     description: description,
     default_price_data: {
       currency,
-      unit_amount_decimal,
+      unit_amount_decimal: unit_amount_decimal.toString(),
     },
     // type: "recurring",
   });
@@ -37,8 +41,8 @@ export default async function createStripeProduct(context, input) {
     if (productResponse?.active) {
       updatePlans.active = productResponse?.active;
     }
-    if (productResponse?.unit_amount_decimal) {
-      updatePlans.unit_amount_decimal = productResponse?.unit_amount_decimal;
+    if (unit_amount_decimal) {
+      updatePlans.unitAmountDecimal = productResponse?.unit_amount_decimal;
     }
     updatePlans.updatedAt = new Date();
     const modifier = { $set: updatePlans };
@@ -51,18 +55,18 @@ export default async function createStripeProduct(context, input) {
         returnOriginal: false,
       }
     );
-    // console.log("updatedPlansResponse ", updatedPlansResponse);
+    console.log("updatedPlansResponse ", updatedPlansResponse);
   } else {
     const plansPayload = {
       planId: productResponse.id,
       priceId: productResponse?.default_price,
       planName: productResponse?.name,
       active: productResponse?.active,
-      unitAmountDecimal: productResponse?.unit_amount_decimal,
+      unitAmountDecimal: unit_amount_decimal/100,
       createdAt: now,
       updatedAt: now,
     };
-    const PlanResponse = await StripeProducts.insertOne(plansPayload);
+    await StripeProducts.insertOne(plansPayload);
     // console.log("PlanResponse ", PlanResponse);
   }
   return productResponse;
