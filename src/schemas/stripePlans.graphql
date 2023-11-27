@@ -2,6 +2,7 @@ type StripePlans {
   _id: ID
   name: String
   interval: String
+  planId: String
   active: Boolean
   currency: String
   product: String

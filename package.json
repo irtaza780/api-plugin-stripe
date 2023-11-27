@@ -2,7 +2,7 @@
   "name": "api-plugin-stripe",
   "description": "Boilerplate Stripe plugin for the Reaction API",
   "label": "Stripe Plugin",
-  "version": "2.1.11-development",
+  "version": "2.1.12-development",
   "main": "index.js",
   "type": "module",
   "engines": {
