@@ -16,6 +16,7 @@ import retrieveAllStripePrices from "./retrieveAllStripePrices.js";
 import getAllStripeSubscribedCustomer from "./getAllStripeSubscribedCustomer.js";
 import retrieveStripePaymentIntentById from "./paymentIntents/retrieveStripePaymentIntentById.js";
 import listAllStripePaymentIntents from "./paymentIntents/listAllStripePaymentIntents.js";
+import stripeMembershipPlans from "./stripeMembershipPlans.js";
 
 export default {
   retrieveStripeCustomer,
@@ -36,4 +37,5 @@ export default {
   getAllStripeSubscribedCustomer,
   retrieveStripePaymentIntentById,
   listAllStripePaymentIntents,
+  stripeMembershipPlans
 };

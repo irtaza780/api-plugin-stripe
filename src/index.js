@@ -27,6 +27,11 @@ export default async function register(app) {
         updatedAt: { type: Date, default: Date.now },
         createdAt: { type: Date, default: Date.now },
       },
+      StripeConnectAccount: {
+        name: "StripeConnectAccount",
+        updatedAt: { type: Date, default: Date.now },
+        createdAt: { type: Date, default: Date.now },
+      },
     },
     functionsByType: {
       startup: startupFunctions,

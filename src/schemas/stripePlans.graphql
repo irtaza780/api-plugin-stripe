@@ -1,5 +1,7 @@
-type stripePlans {
-  id: ID
+type StripePlans {
+  _id: ID
+  name: String
+  interval: String
   active: Boolean
   currency: String
   product: String
@@ -7,7 +9,6 @@ type stripePlans {
   type: typePayload
   unit_amount: Float
   unit_amount_decimal: String
-  
 }
 type recurringPayload {
   interval: intervalPayload
@@ -35,6 +36,7 @@ enum typePayload {
 }
 input stripePlanInput {
   #   id: ID
+  name: String!
   active: Boolean
   currency: String
   product: String!
@@ -50,10 +52,11 @@ input updateStripePrice {
   unit_amount_decimal: String
 }
 extend type Mutation {
-  createStripePlan(input: stripePlanInput!): stripePlans!
-  updateStripePrice(input: updateStripePrice, product: String): stripePlans
+  createStripePlan(input: stripePlanInput!): StripePlans!
+  updateStripePrice(input: updateStripePrice, product: String): StripePlans
 }
 extend type Query {
-  retrievesStripePlan(id: ID): stripePlans!
-  retrieveAllStripePrices(limit: Int): [stripePlans]
+  retrievesStripePlan(id: ID): StripePlans!
+  retrieveAllStripePrices(limit: Int): [StripePlans]
+  stripeMembershipPlans: [StripePlans]
 }

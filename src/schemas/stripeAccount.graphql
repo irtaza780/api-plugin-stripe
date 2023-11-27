@@ -1,9 +1,10 @@
-type stripeAccount {
-  id: ID
-  business_type: business_typeValue
-  country: String!
-  email: String!
-  type: capabilitiesPayload
+type StripeAccount implements Node {
+  _id: ID!
+  userId: ID
+  businessType: business_typeValue
+  country: String
+  email: String
+  type: CapabilitiesPayload
 }
 enum business_typeValue {
   individual
@@ -11,16 +12,16 @@ enum business_typeValue {
   non_profit
   government_entity
 }
-enum capabilitiesPayload {
+enum CapabilitiesPayload {
   custom
   express
   standard
 }
 input CreateStripeAccountInput {
-  business_type: business_typeValue
-  country: String!
-  email: String!
-  type: capabilitiesPayload
+  businessType: business_typeValue
+  country: String
+  email: String
+  type: CapabilitiesPayload
 }
 
 input ExpressAccountLoginLinkInput {
@@ -28,10 +29,10 @@ input ExpressAccountLoginLinkInput {
 }
 
 type Mutation {
-  createStripeAccount(input: CreateStripeAccountInput!): stripeAccount
+  createStripeConnectAccount(input: CreateStripeAccountInput!): StripeAccount
   createConnectedAccount(input: CreateStripeAccountInput): String
   expressAccountLoginLink(input: ExpressAccountLoginLinkInput): String
 }
 type Query {
-  getStripeAccount(id: ID): stripeAccount
+  getStripeAccount(id: ID): StripeAccount
 }

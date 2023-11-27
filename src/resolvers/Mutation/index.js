@@ -1,5 +1,5 @@
 import createStripeCustomer from "./createStripeCustomer.js";
-import createStripeAccount from "./createStripeAccount.js";
+import createStripeConnectAccount from "./createStripeConnectAccount.js";
 import updateStripeCustomer from "./updateStripeCustomer.js";
 import deleteStripeCustomer from "./deleteStripeCustomer.js";
 import createStripePaymentMethod from "./createStripePaymentMethod.js";
@@ -29,7 +29,7 @@ export default {
   createStripeSinglePrice,
   updateStripePaymentIntents,
   createStripeCustomer,
-  createStripeAccount,
+  createStripeConnectAccount,
   updateStripeCustomer,
   deleteStripeCustomer,
   createStripePaymentMethod,
