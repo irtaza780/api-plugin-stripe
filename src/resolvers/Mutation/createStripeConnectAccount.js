@@ -4,8 +4,5 @@ export default async function createStripeAccount(_, { input }, context) {
     input
   );
 
-    
-
-
   return account;
 }

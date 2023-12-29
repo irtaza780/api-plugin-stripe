@@ -144,7 +144,6 @@ function stripeConnectStartup(context) {
 function subscriptionStartup(context) {
   const { appEvents } = context;
   appEvents.on("afterMembershipSubscription", ({ subscriptionId }) =>
-    // console.log("subscription Id in startup", subscriptionId)
     sendMembershipNotification(context, subscriptionId)
   );
 }

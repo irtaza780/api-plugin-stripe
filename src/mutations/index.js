@@ -23,13 +23,14 @@ import createStripeCustomerFromWebhookCall from "./createStripeCustomerFromWebho
 import createConnectedAccount from "./createConnectedAccount.js";
 import expressAccountLoginLink from "./expressAccountLoginLink.js";
 import deleteStripeAccount from "./deleteStripeAccount.js";
+import verifyBakerAccess from "./verifyBakerAccess.js";
 
 export default {
   createStripeCustomerFromWebhookCall,
   createStripeCheckOutSession,
   createStripeCustomer,
   createStripeConnectAccount,
-  updateStripeCustomer, 
+  updateStripeCustomer,
   deleteStripeCustomer,
   createStripePaymentMethod,
   updateStripePaymentMethod,
@@ -50,4 +51,5 @@ export default {
   createConnectedAccount,
   expressAccountLoginLink,
   deleteStripeAccount,
+  verifyBakerAccess,
 };
