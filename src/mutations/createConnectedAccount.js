@@ -55,12 +55,8 @@ export default async function createConnectedAccount(context, input) {
   }
   const accountLink = await stripe.accountLinks.create({
     account: account.id,
-    //if user didn't completed the onboarding flow
-    // refresh_url: 'https://example.com/reauth',
-    //user completed the onboarding flow
-    // return_url: 'https://example.com/return',
-    refresh_url: "https://app.test.yourbakingconnection.com/signin",
-    return_url: "https://app.test.yourbakingconnection.com/about-bakers",
+    refresh_url: `${process.env.BASE_URL}/profile`,
+    return_url: `${process.env.BASE_URL}`,
     type: "account_onboarding",
   });
 
