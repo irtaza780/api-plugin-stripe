@@ -47,7 +47,7 @@ export default async function createConnectedAccount(context, input) {
         mcc: "5814",
         product_description: "Bakery items",
         support_email: "baker@gmail.com",
-        url: "https://app.test.yourbakingconnection.com/",
+        url: `${process.env.BASE_URL}`,
       },
     });
   } else {

@@ -12,14 +12,14 @@ export default async function createStripeCheckOutSession(context, input) {
   const { priceId, quantity, mode, subscriptionType } = input;
   let url;
   if (process.env.ENVIRONMENT === "production") {
-    url = process.env.PRODUCTION_URL;
+    url = process.env.BASE_URL;
   } else if (process.env.ENVIRONMENT === "localhost") {
     url = process.env.LOCALHOST_URL;
   }
 
   if (mode === "subscription") {
     url = `${url}/successful-subscription`;
-  } else if (mode === " payment") {
+  } else if (mode === "payment") {
     url = `${url}/order-placed`;
   }
 
